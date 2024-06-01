@@ -1,0 +1,17 @@
+{
+  "name": "home-search-depo",
+  "version": "1.0.0",
+  "description": "Personal Project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node start"
+  },
+  "author": "Remi Feyi-Sobanjo",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "express": "^4.19.2",
+    "nodemon": "^3.1.1"
+  }
+}
