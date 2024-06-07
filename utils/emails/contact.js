@@ -1,7 +1,7 @@
 const nodemailer = require("nodemailer");
 require("dotenv").config();
 
-exports.welcomeUser = async(email, first_name, subject) => {
+exports.contactUsMsg = async(email, first_name, subject) => {
     const salutation = function(){
         if(first_name){
             return `Dear ${first_name}`

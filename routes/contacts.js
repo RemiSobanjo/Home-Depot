@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 
 const contactModel = require("../models/contacts.js");
-const {welcomeUser} = require("../utils/emails/contact.js");
+const {contactUsMsg} = require("../utils/emails/contact.js");
 
 router.post("/enquiry", async(req, res) => {
     const {first_name, last_name, email, phone_number, subject, message} = req.body
@@ -15,10 +15,11 @@ router.post("/enquiry", async(req, res) => {
         subject, 
         message,
     }
-   // const saveMsg = await contactModel.create(contactObj);
+   
+    const saveMsg = await contactModel.create(contactObj);
 
    //send mail message
-   await welcomeUser(email, first_name, subject)
+   await contactUsMsg(email, first_name, subject)
 
    
     return res.status(201).json({
