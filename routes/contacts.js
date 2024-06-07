@@ -16,7 +16,7 @@ router.post("/enquiry", async(req, res) => {
         message,
     }
    
-    const saveMsg = await contactModel.create(contactObj);
+   // const saveMsg = await contactModel.create(contactObj);
 
    //send mail message
    await contactUsMsg(email, first_name, subject)
