@@ -6,7 +6,7 @@ require("dotenv").config();
 const PORT = process.env.PORT || 3000;
 
 require("./operations/routes")(app);
-//require("./operations/db")(app);
+require("./operations/db")(app);
 
 app.use(notFound);
 app.use(errorHandler);
