@@ -150,6 +150,7 @@ const signIn = async(req, res, next) => {
         });
     }
 
+    // JWT
     const token = await generateToken(userExist);
 
     return res.status(StatusCodes.CREATED).json({

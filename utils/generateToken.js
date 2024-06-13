@@ -7,7 +7,7 @@ const otpGenerator = require("otp-generator");
 exports.generateToken = async (user) => {
     const token = jwt.sign(
         {
-            _id: user.id,
+            _id: user._id,
             email: user.email,
             phone: user.phone,
         },
