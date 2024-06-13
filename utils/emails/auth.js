@@ -1,17 +1,12 @@
 const nodemailer = require("nodemailer");
 const {PASSMAILER, MAILER, SERVICE, HOST} = require("../../config/envConfig");
 
-exports.contactUsMsg = async(email, first_name, subject) => {
-    const salutation = function(){
-        if(first_name){
-            return `Dear ${first_name}`
-        }
-        else{
-            return "Hi"
-        }
-    }
+exports.userSignUpMsg = async (email, first_name) => {
+    
+};
 
-    console.log(salutation());
+exports.signUpOtp = async (email, OTP) => {
+    console.log(email, PASSMAILER);
     try{
         var smtpConfig = {
             service: SERVICE,
@@ -25,17 +20,19 @@ exports.contactUsMsg = async(email, first_name, subject) => {
             tls : { rejectUnauthorized: false }
         };
 
-        const transporter = nodemailer.createTransport(smtpConfig); 
+        const transporter = nodemailer.createTransport(smtpConfig);
 
         await transporter.sendMail({
             from: MAILER,
             to: email,
-            subject: subject,
-            html: `<b> ${salutation()}</b></br>
+            subject: "OTP SENT",
+            html: `<b> Hello, </b></br>
             <p>
-                We received your mail. We are working on it and 
+                We were notified that you needed a token.
                 <br /> 
-                will contact you as soon as possible
+                Here's your 6-digit magic number ${OTP}
+                <br />
+                Best Regards
             </p>`
         });
         console.log("email sent successfully");

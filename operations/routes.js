@@ -1,5 +1,7 @@
 const express = require("express");
 const contactRouter = require("../routes/contacts.js");
+const authRouter = require("../routes/users.js");
+const StatusCode = require("../utils/StatusCode.js");
 
 require("dotenv").config();
 
@@ -14,7 +16,7 @@ module.exports = (app) => {
 
         if(req.method === "OPTIONS"){
             res.header("Access-Control-Allow-Methods", "PUT, GET, PATCH, DELETE");
-            return res.status(200).json({});
+            return res.status(StatusCode.OK).json({});
         }
 
         next();
@@ -28,7 +30,7 @@ module.exports = (app) => {
     console.log(version)
 
     app.use(`${version}/contacts`, contactRouter);
-    //app.use(`${version}/auths`, authRouter);
+    app.use(`${version}/auth`, authRouter);
 
 
     app.get("/", (req, res, next) => {

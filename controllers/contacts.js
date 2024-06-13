@@ -1,4 +1,5 @@
 const contactModel = require("../models/contacts.js");
+const StatusCode = require("../utils/StatusCode.js");
 const {contactUsMsg} = require("../utils/emails/contact.js");
 
 
@@ -21,7 +22,7 @@ const contact = async(req, res, next) => {
             await contactUsMsg(email, first_name, subject)
 
     
-            return res.status(200).json({
+            return res.status(StatusCode.OK).json({
                 msg: "Thank you for contacting us, we will get back to you shortly.",
                 data:  saveMsg
             })
